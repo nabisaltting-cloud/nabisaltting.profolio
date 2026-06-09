@@ -256,9 +256,21 @@
       background: var(--bg-light); color: var(--bg-dark);
       padding: 80px 6vw; display: flex; flex-direction: column; justify-content: center;
       transform: translateX(100%); transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+      overflow-y: auto; /* 若手機螢幕太小，確保內容可上下滑動 */
     }
     .contact-drawer.open { transform: translateX(0); }
-    .contact-drawer h2 { font-size: 48px; font-weight: 500; margin-bottom: 60px; letter-spacing: -0.03em; }
+    .contact-drawer h2 { font-size: 48px; font-weight: 500; margin-bottom: 30px; letter-spacing: -0.03em; }
+    
+    /* 照片樣式設定 */
+    .contact-profile-pic {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
     .contact-item { margin-bottom: 40px; }
     .contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
     .contact-value a { 
@@ -312,9 +324,12 @@
     .modal-overlay.active .modal-close-btn { display: block; }
     .modal-close-btn:hover { opacity: 1; }
 
+    /* ── 手機版與平板響應式設定 ── */
     @media (max-width: 968px) {
-      nav { padding: 32px 24px; flex-direction: column; gap: 24px; align-items: center; }
-      .nav-meta { display: none; }
+      nav { padding: 32px 24px; flex-direction: column; gap: 16px; align-items: center; }
+      /* 修復手機版 Contact 按鈕消失的問題 */
+      .nav-meta { display: block; text-align: center; margin-top: 4px; }
+      
       .home-headline { font-size: 40px; }
       .works-grid { grid-template-columns: 1fr; gap: 40px; }
       .works-grid > .work-item:nth-child(2n) { margin-top: 0; }
@@ -324,6 +339,10 @@
       .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 30px; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
       .modal-content-wrapper { aspect-ratio: 4/3; }
+      
+      /* 確保抽屜在手機版高度不足時可以滑動 */
+      .contact-drawer { padding: 60px 8vw; justify-content: flex-start; }
+      .contact-drawer h2 { margin-top: 40px; font-size: 40px; }
     }
   </style>
 </head>
@@ -352,6 +371,10 @@
 <div class="contact-drawer" id="contactDrawer">
   <button class="contact-close" id="contactClose">Close ✕</button>
   <h2>let's connect.</h2>
+  
+  <!-- 置入您的 Google Drive 照片 -->
+  <img src="https://drive.google.com/thumbnail?id=1KkV9gJocf5XFY0NABmCLP0wKTW-tYm3k&sz=w600" alt="saltting profile" class="contact-profile-pic" />
+  
   <div class="contact-item">
     <div class="contact-label">Email</div>
     <div class="contact-value">
@@ -389,63 +412,48 @@
   <div class="brands-grid">
     <div class="brand-item">
       <div class="brand-text-fallback">Uber Eats</div>
-      <!-- <img src="您的圖片路徑" alt="Uber Eats"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">ROG</div>
-      <!-- <img src="您的圖片路徑" alt="ROG"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">ABC MART</div>
-      <!-- <img src="您的圖片路徑" alt="ABC MART"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">Foodpanda</div>
-      <!-- <img src="您的圖片路徑" alt="Foodpanda"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">ASUS</div>
-      <!-- <img src="您的圖片路徑" alt="ASUS"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">Aunt Stella</div>
-      <!-- <img src="您的圖片路徑" alt="Aunt Stella"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">.st TAIWAN</div>
-      <!-- <img src="您的圖片路徑" alt=".st TAIWAN"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">SNICKERS</div>
-      <!-- <img src="您的圖片路徑" alt="SNICKERS"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">府中15</div>
-      <!-- <img src="您的圖片路徑" alt="府中15"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">CONDÉ NAST</div>
-      <!-- <img src="您的圖片路徑" alt="CONDÉ NAST"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">SINBON</div>
-      <!-- <img src="您的圖片路徑" alt="SINBON"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">Heineken</div>
-      <!-- <img src="您的圖片路徑" alt="Heineken"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">BRITA</div>
-      <!-- <img src="您的圖片路徑" alt="BRITA"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">統一陽光</div>
-      <!-- <img src="您的圖片路徑" alt="統一陽光"> -->
     </div>
     <div class="brand-item">
       <div class="brand-text-fallback">NSTC 國科會</div>
-      <!-- <img src="您的圖片路徑" alt="NSTC 國科會"> -->
     </div>
   </div>
 </section>
